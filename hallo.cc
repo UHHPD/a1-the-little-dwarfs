@@ -1,6 +1,7 @@
-#include<iostream>
+#include <iostream>
 
-r
-int main() {
+int main() 
+  {
 std::cout << "Hallo␣Welt!" << std::endl;
+
 }
