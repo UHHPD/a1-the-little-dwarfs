@@ -13,6 +13,17 @@ double prob(std::vector<int> daten, double mu)
   return result;
 }
 
+void generateTxt(std::vector<int> daten){
+  std::ofstream fout("likelihood.txt");
+
+  double mu = 0;
+  while(mu <= 6){
+    fout << mu << " " << prob(daten, mu) << std::endl;
+    mu+=0.1;
+  }
+  fout.close();
+}
+
 int main() {
   std::ifstream fin("datensumme.txt");
   std::vector<int> daten;
@@ -23,6 +34,7 @@ int main() {
   }
   fin.close();
   std::cout << prob(daten,3.11538) << std::endl;
+  generateTxt(daten);
   return 0;
 }
 
