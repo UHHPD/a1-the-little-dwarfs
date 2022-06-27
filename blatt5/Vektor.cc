@@ -10,7 +10,7 @@ Vektor::Vektor(double nx, double ny, double nz) {
 }
 
 double Vektor::betrag() {
-    return sqrt(pow(x_, 2)*pow(y_, 2)*pow(z_,2)); 
+    return sqrt(pow(x_, 2)+pow(y_, 2)+pow(z_, 2)); 
   }
 
 std::ostream& operator<<(std::ostream& os, Vektor v) {
@@ -33,8 +33,8 @@ Vektor Vektor::operator-(Vektor v) {
   return sum;
 }
 
-Vektor Vektor::mal(Vektor v) {
-  Vektor erg(x_*v.x_, y_*v.y_, z_*v.z_);
+double Vektor::mal(Vektor v) {
+  double erg = x_ * v.x_ + y_ * v.y_ + z_ * v.z_;
   return erg;
 }
 
