@@ -13,6 +13,15 @@ double prob(std::vector<int> daten, double mu)
   return result;
 }
 
+double likelihoodRatio(std::vector<int> daten, double mu){
+  double result = 1;
+  for ( int k : daten ) {
+     result *= (pow(k, k) * exp(-k))/std::tgamma(k+1);
+   }
+  result = prob(daten, mu) / result;
+  return result;
+}
+
 void writeTxt(std::vector<int> daten){
   std::ofstream fout("likelihood.txt");
   double mu = 0;
@@ -56,6 +65,8 @@ int main() {
   }
   fin.close();
   std::cout << prob(daten,3.11538) << std::endl;
+  double z = (-2*log(likelihoodRatio(daten,3.11538))-233) / sqrt(2* 233);
+  std::cout << "z = " << z << std::endl;
   writeTxt(daten);
   writeNllTxt(daten);
   writeDeltaNllTxt(daten);
